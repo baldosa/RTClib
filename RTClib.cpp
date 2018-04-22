@@ -206,6 +206,13 @@ DateTime DateTime::operator-(const TimeSpan& span) {
 TimeSpan DateTime::operator-(const DateTime& right) {
   return TimeSpan(unixtime()-right.unixtime());
 }
+bool DateTime::operator<(const DateTime& right) const {
+    return unixtime() < right.unixtime();
+}
+
+bool DateTime::operator==(const DateTime &right) const {
+    return unixtime() == right.unixtime();
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // TimeSpan implementation
@@ -228,6 +235,14 @@ TimeSpan TimeSpan::operator+(const TimeSpan& right) {
 
 TimeSpan TimeSpan::operator-(const TimeSpan& right) {
   return TimeSpan(_seconds-right._seconds);
+}
+
+bool TimeSpan::operator<(const TimeSpan& right) const {
+     return _seconds < right._seconds ;
+}
+
+bool TimeSpan::operator==(const TimeSpan &right) const {
+    return _seconds == right._seconds;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

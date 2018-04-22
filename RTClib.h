@@ -51,7 +51,13 @@ public:
     DateTime operator+(const TimeSpan& span);
     DateTime operator-(const TimeSpan& span);
     TimeSpan operator-(const DateTime& right);
-
+    
+    bool operator<(const DateTime& right) const;
+    bool operator>(const DateTime& right) const  { return right < *this; };
+    bool operator<=(const DateTime& right) const { return !(*this > right); };
+    bool operator>=(const DateTime& right) const { return !(*this < right); };
+    bool operator==(const DateTime& right) const;
+    bool operator!=(const DateTime& right) const { return !(*this == right); };
 protected:
     uint8_t yOff, m, d, hh, mm, ss;
 };
@@ -71,6 +77,13 @@ public:
     TimeSpan operator+(const TimeSpan& right);
     TimeSpan operator-(const TimeSpan& right);
 
+    bool operator<(const TimeSpan& right) const;
+    bool operator>(const TimeSpan& right) const  { return right < *this; };
+    bool operator<=(const TimeSpan& right) const { return !(*this > right); };
+    bool operator>=(const TimeSpan& right) const { return !(*this < right); };
+    bool operator==(const TimeSpan& right) const;
+    bool operator!=(const TimeSpan& right) const { return !(*this == right); };
+    
 protected:
     int32_t _seconds;
 };
